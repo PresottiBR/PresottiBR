@@ -1,0 +1,260 @@
+body {
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
+}
+
+.banner {
+    height: 100vh; /* Toda a altura do viewport */
+    padding: 0;    /* sem distancia para o elemento */
+
+
+}
+
+.banner img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* cobre todo o espaço disponivel e faz cortes se necessario */
+    
+}
+
+.nextPage {
+    position: fixed; /* elemento fica fixo na posicao mesmo q a pagina se mova */
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center; /* ALINHA O CONTEUDO NA VERTICAL */
+    justify-content: center; /* ALINHA O CONTEUDO NA HORIZONTAL */
+    z-index: 3;
+}
+
+.circulo {
+    background-color: rgb(241, 241, 241);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrow {
+    width: 24px;
+    height: 24px;
+}
+
+/* REGRAS */
+
+.regras {
+    height: 100vh;
+    display: flex;
+    background-color: rgb(187, 181, 181);
+    font-family: "Mulish", sans-serif;
+}
+
+.regras .contentBox {
+    width: 100%;
+    padding: 50px;
+    background-color: rgba(136, 136, 136, 0.61);
+}
+
+
+.regras .imgBox {
+    width: 100%;
+    background: url(img/Mole.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+}
+
+.previousPage {
+    position: fixed;
+    top: 10px; 
+    left: 10px;
+    z-index: 3;
+}
+
+/* TABULEIRO */
+
+.tabuleiro {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #7fc97f;
+}
+
+.gramado {
+    width: 536px;
+    height: 536px;
+    background-color: #23bd23;
+    display: flex;
+    align-items: center;
+    justify-content: space-around; /* space-around significa que o conteudo esta distribuido uniformemente no eixo horizontal (principal)  */
+    flex-wrap: wrap; /* permite quebra de linha */
+    cursor: url(../images/hammer.png), crosshair;
+    padding: 0px;
+    border-radius: 36px;
+}
+
+.gramado img {
+    padding: 25px 50px 25px 50px;
+    box-sizing: content-box; /* Incluido por causa do bootstrap */
+    width:76px;
+    height: 61px;
+}
+
+.pontos {
+    width:536px;
+    height: 536px;
+    display: flex;
+    justify-content: center;
+    font-family: "Sixtyfour", sans-serif;
+}
+
+.pontos th {
+    font-size: 50px;
+    text-align: center;
+}
+
+.pontos td:first-child {
+    text-align: center;
+    font-size: 36px;
+    font-family: "Sixtyfour", sans-serif;
+}
+
+#start {
+    width: 100%;
+    font-size: 36px;
+    border: 20px solid #000000;
+    border-radius: 2.5rem;
+}
+
+#start:hover {
+    background-color: rgb(10, 16, 14);
+    color: rgb(255, 0, 102);
+    border: 20px solid rgb(236, 22, 22);
+}
+
+/* RECORDES */
+
+.records {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #8be78b;
+    font-family: 'Mulish';
+    font-size: 26px;
+
+}
+
+.heading {
+    font-family: 'MedievalSharp', cursive;
+    color: rgb(92, 91, 94);
+    text-align: center;
+}
+
+.records tr:nth-child(even) {
+    background-color: rgb(255, 255, 255);
+}
+
+.records th {
+    color: rgb(255, 255, 255);
+    background-color: #000000;
+    text-align: center;
+    font-size: 36px;
+    padding-left: 30px;
+    padding-right: 30px;
+
+}
+
+.records td {
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 30px;
+}
+
+.records td:first-child, td:nth-child(3) { /* seleciona a 1a e a 3a colunas */
+    text-align: right;
+}
+
+.records td:nth-child(4) {
+    text-align: center;
+}
+
+.records table {
+    border-collapse: collapse;
+    font-family: 'MedievalSharp', cursive;
+    background-color: rgb(162, 161, 163);
+}
+
+/* MEDIA QUERIES */
+/* considera-se uma tela pequena qd a resolucao da largura ficar abaixo de 991px*/
+
+@media(max-width: 991px) {  
+    /* REGRAS */
+    .regras {
+        flex-direction: column;
+    }
+
+    .regras .imgBox {
+        height: 100%;
+    }
+
+    /* TABULEIRO */
+
+    .tabuleiro {
+        flex-direction: column-reverse;
+        height: 100%;
+    }
+
+    .pontos th {
+        font-size: 30px;
+    }
+
+    .pontos td:first-child {
+        font-size: 20px;
+    }
+
+    .gramado {
+        width: 400px;
+        height: 400px;
+    }
+
+    .pontos {
+        width: 400px;
+        height: 400px;
+    }
+
+    .pontos {
+        width: 400px;
+        height: 400px;
+    }
+
+    gramado img {
+        padding:  10px 30px 10px 30px;
+    }
+
+    /* RECORDES */
+
+    .records tr th {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .records th {
+        font-size: 18px;
+    }
+
+    .records td {
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 15px;
+    }
+
+}
