@@ -81,4 +81,3 @@ function martelada(evento) {
     }
     mostraPontuacao();
 }
-
