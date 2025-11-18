@@ -4,23 +4,9 @@ var perdidos = 0;
 var errados = 0; 
 var intervalo = 5000; 
 var janela = 2000; 
+var timer = null;
 
-
-<button onclick="minhafunção()">Clique Aqui</button>
-document.getElementById("idyButton").addEventListener("click", minhafunção);
-document.getElementById("idButton").onclick = function() {
-        alert("O botão foi clicado!");
-};
-var botao = document.getElementById("idButton");
-botao.addEventListener("click", trataCick) 
-{
-    alert("O botão foi clicado!");
-}
-document.getElementById("idButton").addEventListener("click", trataCick) 
-window.onload = function() {
-    document.getElementById('idGramado').addEventListener('mousedown', marteloBaixo);
-}
-onload = function () {
+window.onload = function () {
     document.getElementById('start').addEventListener('click', start);
     document.getElementById('idGramado').addEventListener('mousedown', marteloBaixo);
     document.getElementById('idGramado').addEventListener('mouseup', marteloCima);
@@ -29,32 +15,29 @@ onload = function () {
     document.getElementById('buraco2').addEventListener('click', martelada);
     document.getElementById('buraco3').addEventListener('click', martelada);
     document.getElementById('buraco4').addEventListener('click', martelada);
-} 
-  
+};
+
 function start () {
     var botao = document.getElementById('start');
-
-    botao.removeEventListener('click', start); // remover o evento do botão Start para que o usuário não possa inicializar o jogo várias vezes;
+    botao.removeEventListener('click', start);
     botao.disabled = true;
     sobeToupeira();
 }
 
 function sobeToupeira() {
-    var buraco = Math.floor(Math.random() * 5); // floor arredonda o numero escolhido no intervalo para baixo
-    var objBuraco = document.getElementById('buraco' + buraco); // ele concatena o numero aleatorio obtido com a palavra buraco, formando o id dos buracos (buraco0, buraco1, buraco2, buraco3, buraco4). Armazena a referência desse elemento na variável objBuraco
-    objBuraco.src = 'img/hole-mole.png'; // altera o atributo src da imagem (tag img) pela imagem com a toupeira (hole-mole.png)
+    var buraco = Math.floor(Math.random() * 5);
+    var objBuraco = document.getElementById('buraco' + buraco);
+    objBuraco.src = 'img/hole-mole.png';
     timer = setTimeout(tiraToupeira, janela, buraco);
     setTimeout(sobeToupeira, intervalo);
 }
 
-
 function tiraToupeira(buraco) {
-    const objBuraco = document.getElementById('buraco' + buraco);
-    objBuraco.src='img/hole.png';
-    perdidos++; // perdidos = perdidos +1
+    var objBuraco = document.getElementById('buraco' + buraco);
+    objBuraco.src = 'img/hole.png';
+    perdidos++;
     mostraPontuacao();
 }
-
 
 function mostraPontuacao() {
     mostraPontuacaoDe('acertos', acertos);
@@ -64,17 +47,14 @@ function mostraPontuacao() {
 }
 
 function mostraPontuacaoDe(display, valor) {
-    // pega as imagens
-    let objCentena = document.getElementById(display).firstChild;
-    let objDezena = objCentena.nextSibling;
-    let objUnidade = objDezena.nextSibling;
+    var objCentena = document.getElementById(display).firstChild;
+    var objDezena = objCentena.nextSibling;
+    var objUnidade = objDezena.nextSibling;
 
-    // calcula o valor de cada algarismo
-    let centena = parseInt(valor / 100);
-    let dezena = parseInt((valor / 10) % 10);
-    let unidade = valor % 10;
+    var centena = parseInt(valor / 100);
+    var dezena = parseInt((valor / 10) % 10);
+    var unidade = valor % 10;
 
-    // muda a img e o valor do atributo para o leitor de tela
     objCentena.src = 'img/caractere_' + centena + '.gif';
     objCentena.alt = centena;
     objDezena.src = 'img/caractere_' + dezena + '.gif';
@@ -93,13 +73,12 @@ function marteloCima() {
 
 function martelada(evento) {
     if (evento.target.src.includes('hole-mole')) {
-        // acertou
-        acertos ++;
+        acertos++;
         evento.target.src = 'img/hole.png';
         clearTimeout(timer);
-    }
-    else {
-        errados ++;
+    } else {
+        errados++;
     }
     mostraPontuacao();
 }
+
